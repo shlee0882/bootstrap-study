@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Welcome Coffee Shop</title>
+	 	<meta charset="utf-8">
+	 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	 	<link rel="stylesheet" type="text/css" href="css/myCustom.css">
+	</head>
+	<body>
+		<style type="text/css">
+			blockquote{
+				background: #f9f9f9;
+				border-left: 10px solid #cccccc;
+				margin: 1.5em 10px;
+				padding: 0.5em 10px;
+				quotes: "\201C""\201D""\2018""\2019";
+			}
+		</style>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">Coffee Learn</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="index.html">소개<span class="sr-only"></span></a></li>
+						<li><a href="makeInfo.html">만든 사람</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">영상<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="coffeeVideo.html?coffeeName=americano">아메리카노</a></li>
+								<li><a href="coffeeVideo.html?coffeeName=coffeelattee">카페라떼</a></li>
+								<li><a href="coffeeVideo.html?coffeeName=capuccino">카푸치노</a></li>
+							</ul>
+						</li>
+					</ul>
+					<form class="navbar-form navbar-left">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="내용을 입력하세요.">
+						</div>
+						<button type="submit" class="btn btn-default">검색</button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">접속하기<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="loginForm.html">로그인</a></li>
+								<li><a href="registerForm.html">회원가입</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<div class="row">
+				<ul class="list-group">
+					<a href="#" class="list-group-item" id="ame">1. 아메리카노 제작 영상</a>	
+					<a href="#" class="list-group-item" id="cafe">2. 카페 라떼 제작 영상</a>
+					<a href="#" class="list-group-item" id="capu">3. 카푸치노 제작 영상</a>
+				</ul>
+			</div>
+			<div class="row">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5aDqNwMVEyc"></iframe>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<p>
+					자바코드입니다.
+				</p>
+				<pre class="pre-scrollable">
+public class MyClass {
+	public static void main(String args[]){
+		System.out.println("안녕하세요.");
+	}
+}
+</pre>
+			</div>
+		</div>
+		<div class="container">
+			<hr>
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label>댓글: </label>
+					<textarea class="form-control" rows="5" id="commentContent" name="commentContent"></textarea>
+					<br>
+					<button type="submit" class="btn pull-right">등록</button>
+				</div>
+			</form>
+			<hr>
+		</div>
+
+		<footer style="background-color: #000000; color: #ffffff">
+			<div class="container">
+				<br>
+				<div class="row">
+					<div class="col-sm-2" style="text-align: center;"><h5>Copyright &copy; 2019</h5><h5>이상현(shlee0882)</h5></div>
+					<div class="col-sm-8"><h4>만든이 소개</h4><p>저는 이상현입니다. 현재 웹개발자로 일하고 있습니다.</p></div>
+					<div class="col-sm-2"><h4 style="text-align: center;">활동</h4>
+						<div class="list-group">
+							<a href="https://shlee0882.tistory.com" class="list-group-item">블로그</a>
+							<a href="https://github.com/shlee0882" class="list-group-item">Github</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script type="text/javascript">
+		$(function() {
+			var url_string = window.location.href;
+			var url = new URL(url_string);
+			var coffeeName = url.searchParams.get("coffeeName");
+			console.log(coffeeName);
+
+			if(coffeeName == "americano"){
+				$("#ame").addClass("active");
+			}else if(coffeeName == "coffeelattee"){
+				$("#cafe").addClass("active");
+			}else {
+				$("#capu").addClass("active");
+			}
+		});
+
+	    $('#ame').click(function(e) {
+			$("#ame").addClass("active");
+			$("#cafe").removeClass("active");
+			$("#capu").removeClass("active");
+		});
+
+
+	    $('#cafe').click(function(e) {
+			$("#cafe").addClass("active");
+			$("#ame").removeClass("active");
+			$("#capu").removeClass("active");
+		});
+
+
+	    $('#capu').click(function(e) {
+			$("#capu").addClass("active");
+			$("#cafe").removeClass("active");
+			$("#ame").removeClass("active");
+		});
+
+
+		</script>
+	</body>
+</html>
